@@ -14,7 +14,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const { height, width } = Dimensions.get("window");
 
-/* ---------------- VIDEO COMPONENT ---------------- */
 
 const ReelVideo = ({ videoUrl, isActive }) => {
   const player = useVideoPlayer(videoUrl, (player) => {
@@ -40,7 +39,6 @@ const ReelVideo = ({ videoUrl, isActive }) => {
   );
 };
 
-/* ---------------- REELS SCREEN ---------------- */
 
 const ReelsScreen = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -81,8 +79,6 @@ const reelsData = [
   },
 ];
 
-  /* ---------------- RENDER REEL ---------------- */
-
   const renderReel = ({ item, index }) => {
     const isActive = index === activeIndex;
 
@@ -90,15 +86,9 @@ const reelsData = [
       <View style={styles.reelContainer}>
         <StatusBar barStyle="light-content" />
 
-        {/* VIDEO */}
-
         <ReelVideo videoUrl={item.videoUrl} isActive={isActive} />
 
-        {/* DARK OVERLAY */}
-
         <View style={styles.overlay} />
-
-        {/* CONTENT */}
 
         <View style={styles.content}>
           {/* ---------------- TOP SECTION ---------------- */}
@@ -129,7 +119,6 @@ const reelsData = [
             </TouchableOpacity>
           </View> */}
 
-          {/* ---------------- RIGHT ACTIONS ---------------- */}
 
           <View style={styles.actionButtons}>
             {/* LIKE */}
@@ -144,8 +133,6 @@ const reelsData = [
               <Text style={styles.actionLabel}>{item.likes}</Text>
             </TouchableOpacity>
 
-            {/* COMMENT */}
-
             <TouchableOpacity style={styles.actionButton}>
               <MaterialCommunityIcons
                 name="comment-outline"
@@ -155,8 +142,6 @@ const reelsData = [
 
               <Text style={styles.actionLabel}>{item.comments}</Text>
             </TouchableOpacity>
-
-            {/* SHARE */}
 
             <TouchableOpacity style={styles.actionButton}>
               <MaterialCommunityIcons
@@ -168,8 +153,6 @@ const reelsData = [
               <Text style={styles.actionLabel}>{item.shares}</Text>
             </TouchableOpacity>
 
-            {/* MORE */}
-
             <TouchableOpacity style={styles.actionButton}>
               <MaterialCommunityIcons
                 name="dots-horizontal"
@@ -179,7 +162,6 @@ const reelsData = [
             </TouchableOpacity>
           </View>
 
-          {/* ---------------- BOTTOM SECTION ---------------- */}
 
           <View style={styles.bottomSection}>
             {/* USER */}
@@ -192,11 +174,7 @@ const reelsData = [
               </TouchableOpacity>
             </View>
 
-            {/* CAPTION */}
-
             <Text style={styles.caption}>{item.caption}</Text>
-
-            {/* MUSIC */}
 
             <View style={styles.musicRow}>
               <MaterialCommunityIcons
@@ -215,7 +193,6 @@ const reelsData = [
     );
   };
 
-  /* ---------------- SCROLL ---------------- */
 
   const onScroll = (event) => {
     const scrollPosition = event.nativeEvent.contentOffset.y;
@@ -224,8 +201,6 @@ const reelsData = [
 
     setActiveIndex(index);
   };
-
-  /* ---------------- SCREEN ---------------- */
 
   return (
     <View style={styles.container}>
@@ -245,7 +220,6 @@ const reelsData = [
   );
 };
 
-/* ---------------- STYLES ---------------- */
 
 const styles = StyleSheet.create({
   container: {
@@ -259,20 +233,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
   },
 
-  /* VIDEO */
-
   video: {
     ...StyleSheet.absoluteFillObject,
   },
-
-  /* OVERLAY */
 
   overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0, 0, 0, 0.15)",
   },
-
-  /* CONTENT */
 
   content: {
     ...StyleSheet.absoluteFillObject,
@@ -280,8 +248,6 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingBottom: 90,
   },
-
-  /* ---------------- TOP ---------------- */
 
   topSection: {
     flexDirection: "row",
@@ -316,7 +282,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 
-  /* ---------------- ACTION BUTTONS ---------------- */
 
   actionButtons: {
     position: "absolute",
@@ -338,7 +303,6 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
 
-  /* ---------------- BOTTOM ---------------- */
 
   bottomSection: {
     position: "absolute",
@@ -372,8 +336,6 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     marginBottom: 10,
   },
-
-  /* MUSIC */
 
   musicRow: {
     flexDirection: "row",

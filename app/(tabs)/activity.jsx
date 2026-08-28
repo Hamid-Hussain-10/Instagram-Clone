@@ -8,6 +8,7 @@ export default function ActivityScreen() {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: "none",
       }}
     >
       <Text variant="headlineMedium">Activity Screen</Text>

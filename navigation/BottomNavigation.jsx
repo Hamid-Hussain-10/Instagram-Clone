@@ -77,9 +77,6 @@ export default function BottomNavigationScreen() {
               }}
             />
           ),
-          headerStyle: {
-            backgroundColor: "none",
-          },
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "home" : "home-outline"}
@@ -130,6 +127,9 @@ export default function BottomNavigationScreen() {
         options={{
           headerTitle: "UserIdName",
           headerTitleAlign: "center",
+          headerTitleStyle:{
+            fontSize: 18,
+          },
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "paper-plane" : "paper-plane-outline"}

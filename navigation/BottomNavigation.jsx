@@ -127,7 +127,7 @@ export default function BottomNavigationScreen() {
         options={{
           headerTitle: "UserIdName",
           headerTitleAlign: "center",
-          headerTitleStyle:{
+          headerTitleStyle: {
             fontSize: 18,
           },
           tabBarIcon: ({ color, focused }) => (
@@ -156,6 +156,7 @@ export default function BottomNavigationScreen() {
         name="Search"
         component={SearchScreen}
         options={{
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "search" : "search-outline"}

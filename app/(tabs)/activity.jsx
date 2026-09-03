@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text, Image } from "react-native";
 import React, { useState } from "react";
 import { TextInput } from "react-native-paper";
+import ActivityTabs from "../../screens/ActivityTabs";
 
 const Activity = () => {
   const [search, setSearch] = useState("");
@@ -52,6 +53,7 @@ const Activity = () => {
           <Text style={styles.statusText}>Hussain</Text>
         </View>
       </View>
+      <ActivityTabs />
     </View>
   );
 };

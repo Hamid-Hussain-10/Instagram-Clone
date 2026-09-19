@@ -1,5 +1,5 @@
-import BottomNavigation from "../navigation/BottomNavigation";
+import { Redirect } from "expo-router";
 
-export default function Home() {
-  return <BottomNavigation />;
+export default function Index() {
+  return <Redirect href="/(tabs)" />;
 }

@@ -159,7 +159,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          headerShown: true,
+          headerShown: false,
 
           tabBarIcon: ({ color, focused }) => (
             <Ionicons

@@ -9,6 +9,7 @@ import SearchScreen from "../app/(tabs)/search";
 import ActivityScreen from "../app/(tabs)/activity";
 import ProfileScreen from "../app/(tabs)/profile";
 import ReelsScreen from "../app/(tabs)/reels";
+
 const Tab = createBottomTabNavigator();
 
 export default function BottomNavigationScreen() {

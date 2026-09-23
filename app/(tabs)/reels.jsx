@@ -27,7 +27,7 @@ const ReelVideo = ({ videoUrl, isActive }) => {
     } else {
       player.pause();
     }
-  }, [isActive, player]);
+  }, [isActive]);
 
   return (
     <VideoView
@@ -43,163 +43,162 @@ const ReelVideo = ({ videoUrl, isActive }) => {
 const ReelsScreen = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-const reelsData = [
-  {
-    id: "1",
-    videoUrl:
-      "https://isorepublic.com/wp-content/uploads/2019/01/iso-republic-free-video-003.mp4",
-    author: "tech_dev",
-    profileImage: "https://via.placeholder.com/40",
-    likes: "12.5K",
-    comments: "342",
-    shares: "1.2K",
-    caption: "Building the future with code 💻🔥",
-  },
-  {
-    id: "2",
-    videoUrl:
-      "https://isorepublic.com/wp-content/uploads/2018/06/iso-republic-free-video-typing-macbook-laptop.mp4",
-    author: "developer",
-    profileImage: "https://via.placeholder.com/40",
-    likes: "24.8K",
-    comments: "567",
-    shares: "3.4K",
-    caption: "Coding mode: ON 💻⚡",
-  },
-  {
-    id: "3",
-    videoUrl:
-      "https://isorepublic.com/wp-content/uploads/2019/01/iso-republic-free-video-017.mp4",
-    author: "tech_world",
-    profileImage: "https://via.placeholder.com/40",
-    likes: "8.3K",
-    comments: "215",
-    shares: "890",
-    caption: "Setup goals ⌨️🔥",
-  },
-];
+  const reelsData = [
+    {
+      id: "1",
+      videoUrl:
+        "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      author: "tech_dev",
+      likes: "12.5K",
+      comments: "342",
+      shares: "1.2K",
+      caption: "Building the future with code 💻🔥",
+    },
+    {
+      id: "2",
+      videoUrl:
+        "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      author: "developer",
+      likes: "24.8K",
+      comments: "567",
+      shares: "3.4K",
+      caption: "Coding mode: ON 💻⚡",
+    },
+    {
+      id: "3",
+      videoUrl:
+        "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      author: "tech_world",
+      likes: "8.3K",
+      comments: "215",
+      shares: "890",
+      caption: "Setup goals ⌨️🔥",
+    },
+  ];
 
   const renderReel = ({ item, index }) => {
     const isActive = index === activeIndex;
 
     return (
       <View style={styles.reelContainer}>
-        <StatusBar barStyle="light-content" />
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="transparent"
+          translucent
+        />
 
         <ReelVideo videoUrl={item.videoUrl} isActive={isActive} />
 
         <View style={styles.overlay} />
 
-        <View style={styles.content}>
-          {/* ---------------- TOP SECTION ---------------- */}
+        <View style={styles.topBar}>
+          <Text style={styles.reelsTitle}>Reels</Text>
 
-          {/* <View style={styles.topSection}>
-            <TouchableOpacity style={styles.userInfo}>
-              <Image
-                source={{ uri: item.profileImage }}
-                style={styles.profileImage}
-              />
-
-              <View>
-                <Text style={styles.username}>{item.author}</Text>
-
-                <TouchableOpacity>
-                  <Text style={styles.followButton}>Follow</Text>
-                </TouchableOpacity>
-              </View>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.cameraButton}>
+            <MaterialCommunityIcons
+              name="camera-outline"
+              size={27}
+              color="#fff"
+            />
+          </TouchableOpacity>
+        </View>
 
 
-            <TouchableOpacity>
-              <MaterialCommunityIcons
-                name="camera-outline"
-                size={28}
-                color="#fff"
-              />
-            </TouchableOpacity>
-          </View> */}
+        <View style={styles.actionButtons}>
+          {/* LIKE */}
 
-
-          <View style={styles.actionButtons}>
-            {/* LIKE */}
-
-            <TouchableOpacity style={styles.actionButton}>
+          <TouchableOpacity style={styles.actionButton}>
+            <View style={styles.iconCircle}>
               <MaterialCommunityIcons
                 name="heart-outline"
-                size={32}
+                size={31}
                 color="#fff"
               />
+            </View>
 
-              <Text style={styles.actionLabel}>{item.likes}</Text>
-            </TouchableOpacity>
+            <Text style={styles.actionLabel}>{item.likes}</Text>
+          </TouchableOpacity>
 
-            <TouchableOpacity style={styles.actionButton}>
+
+          <TouchableOpacity style={styles.actionButton}>
+            <View style={styles.iconCircle}>
               <MaterialCommunityIcons
                 name="comment-outline"
-                size={30}
+                size={29}
                 color="#fff"
               />
+            </View>
 
-              <Text style={styles.actionLabel}>{item.comments}</Text>
-            </TouchableOpacity>
+            <Text style={styles.actionLabel}>{item.comments}</Text>
+          </TouchableOpacity>
 
-            <TouchableOpacity style={styles.actionButton}>
+
+          <TouchableOpacity style={styles.actionButton}>
+            <View style={styles.iconCircle}>
               <MaterialCommunityIcons
                 name="send-outline"
-                size={30}
+                size={29}
                 color="#fff"
               />
+            </View>
 
-              <Text style={styles.actionLabel}>{item.shares}</Text>
-            </TouchableOpacity>
+            <Text style={styles.actionLabel}>{item.shares}</Text>
+          </TouchableOpacity>
 
-            <TouchableOpacity style={styles.actionButton}>
+
+          <TouchableOpacity style={styles.actionButton}>
+            <View style={styles.iconCircle}>
               <MaterialCommunityIcons
                 name="dots-horizontal"
                 size={30}
                 color="#fff"
               />
+            </View>
+          </TouchableOpacity>
+        </View>
+
+
+        <View style={styles.bottomContent}>
+
+          <View style={styles.userRow}>
+            <View style={styles.profileCircle}>
+              <MaterialCommunityIcons name="account" size={22} color="#fff" />
+            </View>
+
+            <Text style={styles.username}>{item.author}</Text>
+
+            <TouchableOpacity style={styles.followButton}>
+              <Text style={styles.followText}>Follow</Text>
             </TouchableOpacity>
           </View>
 
 
-          <View style={styles.bottomSection}>
-            {/* USER */}
+          <Text style={styles.caption}>{item.caption}</Text>
 
-            <View style={styles.authorRow}>
-              <Text style={styles.bottomUsername}>{item.author}</Text>
 
-              <TouchableOpacity>
-                <Text style={styles.bottomFollow}>Follow</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={styles.musicRow}>
+            <MaterialCommunityIcons name="music-note" size={17} color="#fff" />
 
-            <Text style={styles.caption}>{item.caption}</Text>
-
-            <View style={styles.musicRow}>
-              <MaterialCommunityIcons
-                name="music-note"
-                size={16}
-                color="#fff"
-              />
-
-              <Text style={styles.musicText}>
-                Original audio • {item.author}
-              </Text>
-            </View>
+            <Text style={styles.musicText}>Original audio • {item.author}</Text>
           </View>
+        </View>
+
+
+        <View style={styles.videoIndicator}>
+          <MaterialCommunityIcons name="play" size={16} color="#fff" />
         </View>
       </View>
     );
   };
-
 
   const onScroll = (event) => {
     const scrollPosition = event.nativeEvent.contentOffset.y;
 
     const index = Math.round(scrollPosition / height);
 
-    setActiveIndex(index);
+    if (index !== activeIndex) {
+      setActiveIndex(index);
+    }
   };
 
   return (
@@ -209,17 +208,15 @@ const reelsData = [
         renderItem={renderReel}
         keyExtractor={(item) => item.id}
         pagingEnabled
-        snapToInterval={height}
-        decelerationRate="fast"
         showsVerticalScrollIndicator={false}
         onScroll={onScroll}
         scrollEventThrottle={16}
-        removeClippedSubviews
+        decelerationRate="fast"
+        removeClippedSubviews={false}
       />
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -228,9 +225,10 @@ const styles = StyleSheet.create({
   },
 
   reelContainer: {
-    width,
-    height,
+    width: width,
+    height: height,
     backgroundColor: "#000",
+    position: "relative",
   },
 
   video: {
@@ -239,95 +237,124 @@ const styles = StyleSheet.create({
 
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0, 0, 0, 0.15)",
+    backgroundColor: "rgba(0, 0, 0, 0.12)",
   },
 
-  content: {
-    ...StyleSheet.absoluteFillObject,
-    paddingHorizontal: 14,
-    paddingTop: 50,
-    paddingBottom: 90,
-  },
+  topBar: {
+    position: "absolute",
+    top: 45,
+    left: 18,
+    right: 18,
 
-  topSection: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
 
-  userInfo: {
-    flexDirection: "row",
-    alignItems: "center",
+  reelsTitle: {
+    color: "#fff",
+    fontSize: 24,
+    fontWeight: "800",
+    letterSpacing: 0.3,
   },
 
-  profileImage: {
+  cameraButton: {
     width: 42,
     height: 42,
-    borderRadius: 21,
-    marginRight: 10,
-    borderWidth: 1,
-    borderColor: "#fff",
-  },
 
-  username: {
-    color: "#fff",
-    fontSize: 14,
-    fontWeight: "700",
-    marginBottom: 3,
-  },
+    alignItems: "center",
+    justifyContent: "center",
 
-  followButton: {
-    color: "#fff",
-    fontSize: 12,
-    fontWeight: "600",
-  },
+    borderRadius: 22,
 
+    backgroundColor: "rgba(0,0,0,0.35)",
+  },
 
   actionButtons: {
     position: "absolute",
     right: 12,
-    bottom: 145,
+    bottom: 50,
     alignItems: "center",
-    gap: 22,
   },
 
   actionButton: {
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 21,
+  },
+
+  iconCircle: {
+    width: 45,
+    height: 45,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 23,
+    backgroundColor: "rgba(0,0,0,0.25)",
   },
 
   actionLabel: {
     color: "#fff",
     fontSize: 11,
-    fontWeight: "600",
+    fontWeight: "700",
     marginTop: 4,
+    textShadowColor: "rgba(0,0,0,0.6)",
+    textShadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    textShadowRadius: 3,
   },
 
-
-  bottomSection: {
+  bottomContent: {
     position: "absolute",
-    left: 14,
-    right: 70,
-    bottom: 85,
+    left: 16,
+    right: 75,
+    bottom: 50,
   },
 
-  authorRow: {
+  userRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 8,
+    marginBottom: 12,
   },
 
-  bottomUsername: {
+  profileCircle: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: "rgba(255,255,255,0.25)",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 9,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.8)",
+  },
+
+  username: {
     color: "#fff",
     fontSize: 14,
-    fontWeight: "700",
+    fontWeight: "800",
     marginRight: 12,
+    textShadowColor: "rgba(0,0,0,0.7)",
+    textShadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    textShadowRadius: 3,
   },
 
-  bottomFollow: {
+  followButton: {
+    borderWidth: 1,
+    borderColor: "#fff",
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+    borderRadius: 6,
+  },
+
+  followText: {
     color: "#fff",
-    fontSize: 13,
-    fontWeight: "600",
+    fontSize: 12,
+    fontWeight: "700",
   },
 
   caption: {
@@ -335,6 +362,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     marginBottom: 10,
+    textShadowColor: "rgba(0,0,0,0.8)",
+    textShadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    textShadowRadius: 3,
   },
 
   musicRow: {
@@ -346,6 +379,22 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 12,
     marginLeft: 5,
+    maxWidth: width - 100,
+  },
+
+  videoIndicator: {
+    position: "absolute",
+
+    top: height / 2 - 20,
+    left: width / 2 - 20,
+
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: "rgba(0,0,0,0.35)",
+    alignItems: "center",
+    justifyContent: "center",
+    opacity: 0,
   },
 });
 

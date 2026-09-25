@@ -75,11 +75,7 @@ export default function TabLayout() {
           headerShown: false,
 
           tabBarIcon: ({ color }) => (
-            <Ionicons
-              name="play-circle-outline"
-              size={28}
-              color={color}
-            />
+            <Ionicons name="play-circle-outline" size={28} color={color} />
           ),
         }}
       />
@@ -97,43 +93,23 @@ export default function TabLayout() {
 
           headerLeft: () => (
             <View style={styles.headerLeft}>
-              <Ionicons
-                name="briefcase-outline"
-                size={28}
-                color="black"
-              />
+              <Ionicons name="briefcase-outline" size={28} color="black" />
 
-              <Ionicons
-                name="trending-up-outline"
-                size={28}
-                color="black"
-              />
+              <Ionicons name="trending-up-outline" size={28} color="black" />
             </View>
           ),
 
           headerRight: () => (
             <View style={styles.headerRight}>
-              <Ionicons
-                name="ellipsis-horizontal"
-                size={28}
-                color="black"
-              />
+              <Ionicons name="ellipsis-horizontal" size={28} color="black" />
 
-              <Ionicons
-                name="create-outline"
-                size={28}
-                color="black"
-              />
+              <Ionicons name="create-outline" size={28} color="black" />
             </View>
           ),
 
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
-              name={
-                focused
-                  ? "paper-plane"
-                  : "paper-plane-outline"
-              }
+              name={focused ? "paper-plane" : "paper-plane-outline"}
               size={28}
               color={color}
             />
@@ -159,15 +135,33 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerTitle: "UserName",
+          headerTitleAlign: "center",
+
+          headerTitleStyle: {
+            fontSize: 18,
+          },
+          headerStyle: {
+            backgroundColor: "#fff",
+          },
+          headerLeft: () => (
+            <View style={styles.headerLeft}>
+              <Ionicons name="add" size={28} color="black" />
+            </View>
+          ),
+
+          headerRight: () => (
+            <View style={styles.headerRight}>
+              <Ionicons name="logo-threads" size={28} color="black" />
+
+              <Ionicons name="menu-outline" size={28} color="black" />
+            </View>
+          ),
 
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
-              name={
-                focused
-                  ? "person-circle"
-                  : "person-circle-outline"
-              }
+              name={focused ? "person-circle" : "person-circle-outline"}
               size={28}
               color={color}
             />
@@ -179,7 +173,6 @@ export default function TabLayout() {
 }
 
 const styles = StyleSheet.create({
-
   logo: {
     width: 110,
     height: 35,
@@ -206,7 +199,7 @@ const styles = StyleSheet.create({
   headerRight: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
-    marginRight: 12,
+    gap: 10,
+    marginRight: 18,
   },
 });

@@ -5,7 +5,6 @@ export default function ProfileScreen() {
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
-      
         <View style={styles.profileWrapper}>
           <Image
             source={require("../../assets/images/react-logo.png")}
@@ -16,7 +15,6 @@ export default function ProfileScreen() {
             <Ionicons name="add" size={16} color="#ffffff" />
           </View>
         </View>
-
 
         <View style={styles.profileInfo}>
           <Text style={styles.name}>Hamid Hussain</Text>
@@ -37,6 +35,21 @@ export default function ProfileScreen() {
               <Text style={styles.statLabel}>Following</Text>
             </View>
           </View>
+        </View>
+      </View>
+      <View style={styles.bio}>
+        <Text style={styles.bioText}>Education</Text>
+        <Text style={styles.bioText}>
+          This is my bio. I am a software developer.
+        </Text>
+      </View>
+      <View style={styles.hashtags}>
+        <Text style={styles.hasText}>@educatio_10</Text>
+      </View>
+      <View style={styles.dashboardContainer}>
+        <View style={styles.dashboard}>
+          <Text style={styles.dashboardPara}>Professional Dashboard</Text>
+          <Text style={styles.dashboardText}>20k Views in 24 hours</Text>
         </View>
       </View>
     </View>
@@ -110,5 +123,38 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: "#555",
     marginTop: 2,
+  },
+  bio: {
+    paddingHorizontal: 26,
+    paddingTop: 10,
+  },
+  bioText: {
+    fontSize: 14,
+    color: "#6c6c6c",
+    marginBottom: 5,
+  },
+  hashtags: {
+    alignSelf: "flex-start",
+    marginLeft: 26,
+    marginTop: 8,
+    backgroundColor: "#f5f4f4",
+    borderRadius: 20,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+
+  hasText: {
+    fontSize: 14,
+    color: "#555",
+    fontWeight: "500",
+  },
+  dashboardContainer: {
+    marginHorizontal: 16,
+    paddingHorizontal: 26,
+    marginTop: 10,
+    paddingTop: 10,
+    backgroundColor: "#f5f5f5",
+    paddingVertical: 10,
+    borderRadius: 20,
   },
 });

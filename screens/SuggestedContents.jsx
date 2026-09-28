@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const API_URL = "https://jsonplaceholder.typicode.com/photos?_limit=60";
+const API_URL = "https://jsonplaceholder.typicode.com/posts";
 
 const SuggestedContents = ({
   endpoint = API_URL,
@@ -22,6 +22,7 @@ const SuggestedContents = ({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  // Used for refresh
   const loadContents = useCallback(async () => {
     try {
       setLoading(true);
@@ -35,40 +36,103 @@ const SuggestedContents = ({
 
       const data = await response.json();
 
-      setContents(Array.isArray(data) ? data : data.results || data.data || []);
+      const result = Array.isArray(data)
+        ? data
+        : data.results || data.data || [];
+
+      setContents(result);
     } catch (err) {
-      setError(err.message);
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong"
+      );
     } finally {
       setLoading(false);
     }
   }, [endpoint]);
 
+  // Initial load
   useEffect(() => {
-    loadContents();
-  }, [loadContents]);
+    let cancelled = false;
+
+    const fetchInitialContents = async () => {
+      try {
+        setLoading(true);
+        setError("");
+
+        const response = await fetch(endpoint);
+
+        if (!response.ok) {
+          throw new Error("Unable to load suggested content");
+        }
+
+        const data = await response.json();
+
+        const result = Array.isArray(data)
+          ? data
+          : data.results || data.data || [];
+
+        if (!cancelled) {
+          setContents(result);
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setError(
+            err instanceof Error
+              ? err.message
+              : "Something went wrong"
+          );
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchInitialContents();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [endpoint]);
 
   const filteredContents = contents.filter((item) =>
     String(item.title || item.name || "")
       .toLowerCase()
-      .includes(query.trim().toLowerCase()),
+      .includes(query.trim().toLowerCase())
   );
 
-  const renderItem = ({ item }) => (
-    <View style={styles.card}>
-      <Image
-        source={{
-          uri: item.url || item.image || item.thumbnailUrl,
-        }}
-        style={styles.image}
-      />
-    </View>
-  );
+  const renderItem = ({ item }) => {
+    const imageUri =
+
+      item.thumbnailUrl;
+
+    return (
+      <View style={styles.card}>
+        <Image
+          source={{ uri: imageUri }}
+          style={styles.image}
+          resizeMode="cover"
+        />
+      </View>
+    );
+  };
 
   return (
     <View style={styles.container}>
+
+      {/* SEARCH */}
+
       <View style={styles.searchContainer}>
+
         <View style={styles.searchBox}>
-          <Ionicons name="search-outline" size={20} color="#777" />
+          <Ionicons
+            name="search-outline"
+            size={20}
+            color="#777"
+          />
 
           <TextInput
             value={query}
@@ -81,30 +145,57 @@ const SuggestedContents = ({
         </View>
 
         <Pressable style={styles.filterButton}>
-          <Text style={styles.filterText}>Filter</Text>
+          <Text style={styles.filterText}>
+            Filter
+          </Text>
         </Pressable>
+
       </View>
 
-      {loading ? (
-        <ActivityIndicator size="large" color="#262626" style={styles.loader} />
+      {/* CONTENT */}
+
+      {loading && contents.length === 0 ? (
+        <ActivityIndicator
+          size="large"
+          color="#262626"
+          style={styles.loader}
+        />
       ) : error ? (
-        <Text style={styles.message}>{error}</Text>
+        <View style={styles.errorContainer}>
+          <Text style={styles.message}>
+            {error}
+          </Text>
+
+          <Pressable
+            style={styles.retryButton}
+            onPress={loadContents}
+          >
+            <Text style={styles.retryText}>
+              Try Again
+            </Text>
+          </Pressable>
+        </View>
       ) : (
         <FlatList
           data={filteredContents}
           renderItem={renderItem}
-          keyExtractor={(item, index) => String(item.id || index)}
+          keyExtractor={(item, index) =>
+            String(item.id || index)
+          }
           numColumns={3}
           columnWrapperStyle={styles.row}
           contentContainerStyle={styles.list}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={
-            <Text style={styles.message}>No results found</Text>
+            <Text style={styles.message}>
+              No results found
+            </Text>
           }
           onRefresh={loadContents}
           refreshing={loading}
         />
       )}
+
     </View>
   );
 };
@@ -118,50 +209,59 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
+
     paddingHorizontal: 10,
+
     gap: 10,
-    marginBottom: 20,
+
     marginTop: 10,
+    marginBottom: 20,
   },
 
   searchBox: {
     flex: 1,
+
     height: 42,
+
     flexDirection: "row",
     alignItems: "center",
+
     paddingHorizontal: 14,
+
     borderRadius: 23,
+
     backgroundColor: "#f5f5f5",
   },
 
   searchInput: {
     flex: 1,
+
     marginLeft: 8,
+
     fontSize: 14,
+
     color: "#000",
   },
 
   filterButton: {
     height: 42,
+
     paddingHorizontal: 14,
+
     borderRadius: 21,
+
     alignItems: "center",
     justifyContent: "center",
+
     backgroundColor: "#f5f5f5",
   },
 
   filterText: {
     fontSize: 14,
-    fontWeight: "600",
-    color: "#000",
-  },
 
-  categoryText: {
-    fontSize: 16,
     fontWeight: "600",
-    color: "#222",
-    paddingHorizontal: 12,
-    marginBottom: 10,
+
+    color: "#000",
   },
 
   list: {
@@ -174,17 +274,59 @@ const styles = StyleSheet.create({
 
   card: {
     width: "32.8%",
+
     marginBottom: 1,
+
+    overflow: "hidden",
+
+    backgroundColor: "#eee",
   },
 
   image: {
     width: "100%",
-    aspectRatio: 3/4,
+
+    aspectRatio: 3 / 4,
+
     backgroundColor: "#eee",
   },
 
   loader: {
     marginTop: 30,
+  },
+
+  errorContainer: {
+    alignItems: "center",
+
+    justifyContent: "center",
+
+    paddingTop: 40,
+  },
+
+  message: {
+    color: "#666",
+
+    textAlign: "center",
+
+    fontSize: 14,
+  },
+
+  retryButton: {
+    marginTop: 15,
+
+    backgroundColor: "#000",
+
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+
+    borderRadius: 20,
+  },
+
+  retryText: {
+    color: "#fff",
+
+    fontSize: 14,
+
+    fontWeight: "600",
   },
 });
 

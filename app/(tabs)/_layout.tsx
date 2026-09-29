@@ -86,7 +86,9 @@ export default function TabLayout() {
           headerShown: true,
           headerTitle: "UserIdName",
           headerTitleAlign: "center",
-
+          headerStyle: {
+            elevation: 0,
+          },
           headerTitleStyle: {
             fontSize: 18,
           },
@@ -136,14 +138,15 @@ export default function TabLayout() {
         name="profile"
         options={{
           headerShown: true,
-          headerTitle: "UserName",
+          headerTitle: "User-Name_10",
           headerTitleAlign: "center",
 
           headerTitleStyle: {
-            fontSize: 18,
+            fontSize: 20,
           },
           headerStyle: {
             backgroundColor: "#fff",
+            elevation: 0,
           },
           headerLeft: () => (
             <View style={styles.headerLeft}>

@@ -19,7 +19,6 @@ export default function SearchScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Suggestions */}
       <View style={styles.suggestionWrapper}>
         <ScrollView
           horizontal

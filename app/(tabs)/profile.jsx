@@ -1,6 +1,6 @@
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, Image, Text, Pressable } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-
+import ProfileTabs from "../../screens/ProfileTabs"
 export default function ProfileScreen() {
   return (
     <View style={styles.screen}>
@@ -44,7 +44,7 @@ export default function ProfileScreen() {
         </Text>
       </View>
       <View style={styles.hashtags}>
-        <Text style={styles.hasText}>@educatio_10</Text>
+        <Text style={styles.hasText}>@ education_10</Text>
       </View>
       <View style={styles.dashboardContainer}>
         <View style={styles.dashboard}>
@@ -52,6 +52,19 @@ export default function ProfileScreen() {
           <Text style={styles.dashboardText}>20k Views in 24 hours</Text>
         </View>
       </View>
+      <View style={styles.dashboardbtn}>
+        <Pressable style={styles.btn}>
+          <Text style={styles.btnText}>Edit Profile</Text>
+        </Pressable>
+
+        <Pressable style={styles.btn}>
+          <Text style={styles.btnText}>Share Profile</Text>
+        </Pressable>
+      </View>
+      <View style={styles.profileStatus}>
+        <Ionicons name="add" size={24} color="#000" />
+      </View>
+      <ProfileTabs />
     </View>
   );
 }
@@ -64,7 +77,7 @@ const styles = StyleSheet.create({
 
   container: {
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingTop: 5,
     flexDirection: "row",
     alignItems: "center",
   },
@@ -74,9 +87,9 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    width: 90,
+    height: 90,
+    borderRadius: 45,
   },
 
   addButton: {
@@ -101,7 +114,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 18,
     fontWeight: "600",
-    marginBottom: 15,
+    marginBottom: 10,
   },
 
   posts: {
@@ -122,7 +135,6 @@ const styles = StyleSheet.create({
   statLabel: {
     fontSize: 13,
     color: "#555",
-    marginTop: 2,
   },
   bio: {
     paddingHorizontal: 26,
@@ -155,6 +167,42 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     backgroundColor: "#f5f5f5",
     paddingVertical: 10,
-    borderRadius: 20,
+    borderRadius: 12,
+  },
+  dashboardPara: {
+    fontSize: 14,
+    fontWeight: "600",
+  },
+  dashboardbtn: {
+    flexDirection: "row",
+    marginHorizontal: 16,
+    marginTop: 10,
+    gap: 8,
+  },
+
+  btn: {
+    flex: 1,
+    height: 40,
+    backgroundColor: "#f5f5f5",
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  btnText: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#222",
+  },
+  profileStatus: {
+    width: 80,
+    height: 80,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 40,
+    marginLeft: 20,
+    marginTop: 14,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

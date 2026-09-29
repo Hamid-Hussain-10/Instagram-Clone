@@ -76,7 +76,7 @@ const RequestTab = () => {
 
 /* ---------------- ACTIVITY SCREEN ---------------- */
 
-const ActivityScreen = () => {
+const ActivityTabs = () => {
   return (
     <View style={styles.container}>
       <Tab.Navigator
@@ -116,7 +116,7 @@ const ActivityScreen = () => {
   );
 };
 
-export default ActivityScreen;
+export default ActivityTabs;
 
 const styles = StyleSheet.create({
   container: {

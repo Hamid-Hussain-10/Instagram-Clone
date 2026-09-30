@@ -33,7 +33,9 @@ export default function TabLayout() {
         name="index"
         options={{
           headerShown: true,
-
+          headerStyle: {
+            elevation: 0,
+          },
           headerTitle: () => (
             <Image
               source={require("../../assets/images/instagram1.jpg")}

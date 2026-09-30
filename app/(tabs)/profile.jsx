@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image, Text, Pressable } from "react-native";
+import { View, StyleSheet, Image, Text, Pressable, Alert } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ProfileTabs from "../../screens/ProfileTabs"
 export default function ProfileScreen() {
@@ -47,17 +47,23 @@ export default function ProfileScreen() {
         <Text style={styles.hasText}>@ education_10</Text>
       </View>
       <View style={styles.dashboardContainer}>
-        <View style={styles.dashboard}>
+        <View>
           <Text style={styles.dashboardPara}>Professional Dashboard</Text>
-          <Text style={styles.dashboardText}>20k Views in 24 hours</Text>
+          <Text>20k Views in 24 hours</Text>
         </View>
       </View>
       <View style={styles.dashboardbtn}>
-        <Pressable style={styles.btn}>
-          <Text style={styles.btnText}>Edit Profile</Text>
+        <Pressable
+          style={styles.btn}
+          onPress={() => Alert.alert("Share Profile")}
+        >
+          <Text style={styles.btnText}>Share Profile</Text>
         </Pressable>
 
-        <Pressable style={styles.btn}>
+        <Pressable
+          style={styles.btn}
+          onPress={() => Alert.alert("Share Profile")}
+        >
           <Text style={styles.btnText}>Share Profile</Text>
         </Pressable>
       </View>

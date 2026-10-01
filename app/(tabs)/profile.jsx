@@ -1,6 +1,6 @@
 import { View, StyleSheet, Image, Text, Pressable, Alert } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import ProfileTabs from "../../screens/ProfileTabs"
+import ProfileTabs from "../../screens/ProfileTabs";
 export default function ProfileScreen() {
   return (
     <View style={styles.screen}>

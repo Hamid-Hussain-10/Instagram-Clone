@@ -18,7 +18,7 @@ const { height, width } = Dimensions.get("window");
 const ReelVideo = ({ videoUrl, isActive }) => {
   const player = useVideoPlayer(videoUrl, (player) => {
     player.loop = true;
-    player.muted = false;
+    player.muted = true;
   });
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const ReelVideo = ({ videoUrl, isActive }) => {
     } else {
       player.pause();
     }
-  }, [isActive]);
+  }, [isActive, player]);
 
   return (
     <VideoView
@@ -43,38 +43,96 @@ const ReelVideo = ({ videoUrl, isActive }) => {
 const ReelsScreen = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const reelsData = [
-    {
-      id: "1",
-      videoUrl:
-        "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-      author: "tech_dev",
-      likes: "12.5K",
-      comments: "342",
-      shares: "1.2K",
-      caption: "Building the future with code 💻🔥",
-    },
-    {
-      id: "2",
-      videoUrl:
-        "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-      author: "developer",
-      likes: "24.8K",
-      comments: "567",
-      shares: "3.4K",
-      caption: "Coding mode: ON 💻⚡",
-    },
-    {
-      id: "3",
-      videoUrl:
-        "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-      author: "tech_world",
-      likes: "8.3K",
-      comments: "215",
-      shares: "890",
-      caption: "Setup goals ⌨️🔥",
-    },
-  ];
+const reelsData = [
+  {
+    id: "1",
+    videoUrl:
+      "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    author: "tech_dev",
+    likes: "12.5K",
+    comments: "342",
+    shares: "1.2K",
+    caption: "Building the future with code 💻🔥",
+  },
+
+  {
+    id: "2",
+    videoUrl:
+      "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4",
+    author: "codewithali",
+    likes: "24.8K",
+    comments: "567",
+    shares: "3.4K",
+    caption: "Coding mode: ON 💻⚡",
+  },
+
+  {
+    id: "3",
+    videoUrl:
+      "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
+    author: "frontend_dev",
+    likes: "18.2K",
+    comments: "421",
+    shares: "2.1K",
+    caption: "Late night coding session 🌙💻",
+  },
+
+  {
+    id: "4",
+    videoUrl:
+      "https://media.w3.org/2010/05/sintel/trailer.mp4",
+    author: "ai_engineer",
+    likes: "35.7K",
+    comments: "892",
+    shares: "5.6K",
+    caption: "AI is changing everything 🤖🚀",
+  },
+
+  {
+    id: "5",
+    videoUrl:
+      "https://www.w3schools.com/html/mov_bbb.mp4",
+    author: "react_native",
+    likes: "15.9K",
+    comments: "328",
+    shares: "1.8K",
+    caption: "Building mobile apps with React Native ⚛️📱",
+  },
+
+  {
+    id: "6",
+    videoUrl:
+      "https://cdn.truefilesize.com/mp4/sample-5mb.mp4",
+    author: "javascript_dev",
+    likes: "29.4K",
+    comments: "643",
+    shares: "2.9K",
+    caption: "JavaScript makes the web come alive ⚡💛",
+  },
+
+  {
+    id: "7",
+    videoUrl:
+      "https://cdn.truefilesize.com/mp4/sample-10mb.mp4",
+    author: "dev_world",
+    likes: "41.3K",
+    comments: "1.2K",
+    shares: "7.4K",
+    caption: "Developer setup goals 💻🔥",
+  },
+
+  {
+    id: "8",
+    videoUrl:
+      "https://cdn.truefilesize.com/mp4/sample-1mb.mp4",
+    author: "ui_ux_daily",
+    likes: "21.6K",
+    comments: "456",
+    shares: "2.7K",
+    caption: "Simple design is powerful 🎨✨",
+  },
+];
+
 
   const renderReel = ({ item, index }) => {
     const isActive = index === activeIndex;
@@ -105,7 +163,6 @@ const ReelsScreen = () => {
 
 
         <View style={styles.actionButtons}>
-          {/* LIKE */}
 
           <TouchableOpacity style={styles.actionButton}>
             <View style={styles.iconCircle}>

@@ -38,7 +38,7 @@ export default function TabLayout() {
           },
           headerTitle: () => (
             <Image
-              source={require("../../assets/images/instagram1.jpg")}
+              source={require("../../assets/images/image.png")}
               style={styles.logo}
             />
           ),
@@ -47,7 +47,7 @@ export default function TabLayout() {
             <Ionicons
               name="add"
               size={28}
-              color="black"
+              color="#7a0000"
               style={styles.homeHeaderLeft}
             />
           ),
@@ -56,7 +56,7 @@ export default function TabLayout() {
             <Ionicons
               name="heart-outline"
               size={28}
-              color="black"
+              color="#7a0000"
               style={styles.homeHeaderRight}
             />
           ),
@@ -179,19 +179,17 @@ export default function TabLayout() {
 
 const styles = StyleSheet.create({
   logo: {
-    width: 110,
-    height: 35,
+    width: 300,
+    height: 90,
     resizeMode: "contain",
-    marginRight: 20,
-    alignSelf: "center",
   },
 
   homeHeaderLeft: {
-    marginLeft: 5,
+    marginLeft: 8,
   },
 
   homeHeaderRight: {
-    marginRight: 10,
+    marginRight: 16,
   },
 
   headerLeft: {

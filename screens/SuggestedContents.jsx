@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const API_URL = "https://jsonplaceholder.typicode.com/posts";
+const API_URL = "https://jsonplaceholder.typicode.com/photos?_limit=60";
 
 const SuggestedContents = ({
   endpoint = API_URL,
@@ -123,7 +123,6 @@ const SuggestedContents = ({
   return (
     <View style={styles.container}>
 
-      {/* SEARCH */}
 
       <View style={styles.searchContainer}>
 
@@ -152,7 +151,6 @@ const SuggestedContents = ({
 
       </View>
 
-      {/* CONTENT */}
 
       {loading && contents.length === 0 ? (
         <ActivityIndicator
@@ -209,63 +207,46 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
-
     paddingHorizontal: 10,
-
     gap: 10,
-
     marginTop: 10,
     marginBottom: 20,
   },
 
   searchBox: {
     flex: 1,
-
     height: 42,
-
     flexDirection: "row",
     alignItems: "center",
-
     paddingHorizontal: 14,
-
     borderRadius: 23,
-
     backgroundColor: "#f5f5f5",
   },
 
   searchInput: {
     flex: 1,
-
     marginLeft: 8,
-
     fontSize: 14,
-
     color: "#000",
   },
 
   filterButton: {
     height: 42,
-
     paddingHorizontal: 14,
-
     borderRadius: 21,
-
     alignItems: "center",
     justifyContent: "center",
-
     backgroundColor: "#f5f5f5",
   },
 
   filterText: {
     fontSize: 14,
-
     fontWeight: "600",
-
     color: "#000",
   },
 
   list: {
-    paddingHorizontal: 2,
+    backgroundColor: "#eee",
   },
 
   row: {
@@ -274,19 +255,14 @@ const styles = StyleSheet.create({
 
   card: {
     width: "32.8%",
-
     marginBottom: 1,
-
     overflow: "hidden",
-
     backgroundColor: "#eee",
   },
 
   image: {
     width: "100%",
-
     aspectRatio: 3 / 4,
-
     backgroundColor: "#eee",
   },
 

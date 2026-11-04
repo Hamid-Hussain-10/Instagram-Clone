@@ -1,50 +1,63 @@
-# Welcome to your Expo app 👋
+# Instagram Clone 📸
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+### Social Media App | React Native
 
-## Get started
+An Instagram-inspired mobile application developed as a practice project to improve React Native development skills. It recreates the basic Instagram interface and social media experience with a clean and user-friendly design.
 
-1. Install dependencies
+## ✨ Features
 
-   ```bash
-   npm install
-   ```
+- **Home Feed:** Display posts in a social media feed.
+- **Stories:** Instagram-style stories section.
+- **User Profile:** View user profile information and posts.
+- **Posts:** Display images and captions.
+- **Like Feature:** Like and interact with posts.
+- **Search Interface:** Explore users and content.
+- **Navigation:** Smooth navigation between app screens.
 
-2. Start the app
+## 🛠️ Tech Stack
 
-   ```bash
-   npx expo start
-   ```
+- React Native
+- Expo
+- JavaScript / TypeScript
+- Expo Router
+- React Native Paper
+- MaterialCommunityIcons
+- AsyncStorage (if used)
 
-In the output, you'll find options to open the app in a
+## 🚀 Getting Started
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### 1. Clone the Repository
 
 ```bash
-npm run reset-project
+git clone YOUR_REPOSITORY_URL
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Navigate to the Project
 
-## Learn more
+```bash
+cd Instagram-Clone
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 3. Install Dependencies
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm install
+```
 
-## Join the community
+### 4. Start the Application
 
-Join our community of developers creating universal apps.
+```bash
+npx expo start
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Scan the QR code using Expo Go or run the application on an emulator.
+
+## 🎯 Project Purpose
+
+This project was created for learning and practice purposes to improve skills in React Native, mobile UI design, reusable components, and navigation.
+
+## 👨‍💻 Developer
+
+Developed as a personal React Native practice project.
+
+---
